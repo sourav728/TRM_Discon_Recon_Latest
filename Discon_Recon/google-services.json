@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "885724831347",
+    "firebase_url": "https://crashreportfordisconrecon.firebaseio.com",
+    "project_id": "crashreportfordisconrecon",
+    "storage_bucket": "crashreportfordisconrecon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885724831347:android:cbebe955be9f1bb3",
+        "android_client_info": {
+          "package_name": "com.example.tvd.trm_discon_recon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885724831347-eb2s0p1nmmogpscevtf7o22cb6tca1bn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbDY9pojYVLjd4uXoktFxASQTpHI_-rLo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

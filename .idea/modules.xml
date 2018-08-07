@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Discon_Recon/Discon_Recon.iml" filepath="$PROJECT_DIR$/Discon_Recon/Discon_Recon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TRM_Discon_Recon.iml" filepath="$PROJECT_DIR$/TRM_Discon_Recon.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tvd.trm_discon_recon.fragments.Discon_List">
+    <include android:id="@+id/my_toolbar"
+        layout="@layout/toolbar2"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/my_toolbar"
+        android:id="@+id/discon_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/frame_layout"
+        android:layout_marginTop="10dp"
+        android:scrollbars="none"></android.support.v7.widget.RecyclerView>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/account_id_count_layout" />
+    </FrameLayout>
+</RelativeLayout>

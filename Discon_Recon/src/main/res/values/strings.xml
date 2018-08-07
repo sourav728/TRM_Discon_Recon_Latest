@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TRM_Discon_Recon</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rupee">\u20B9</string>
+    <string-array name="remark2">
+        <item>--SELECT--</item>
+        <item>By Fuse</item>
+        <item>By Pole</item>
+        <item>Amount Paid</item>
+    </string-array>
+    <string-array name="remark">
+        <item>--SELECT--</item>
+        <item>By Fuse</item>
+        <item>By Pole</item>
+    </string-array>
+    <string-array name="printer">
+        <item>--SELECT--</item>
+        <item>ALG</item>
+        <item>GPT</item>
+    </string-array>
+    <string name="company_details">© 2018 Transvision Software &amp; Data Solutions Pvt Ltd.\n
+        All Rights Reserved\n<u>www.transvisionsolutions.com</u></string>
+    <string name="title_activity_location">Map</string>
+    <string name="printsuccess">Print Success</string>
+    <string name="printfailed">Print Failure!!</string>
+</resources>

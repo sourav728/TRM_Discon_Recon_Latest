@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/first"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home" />
+    </group>
+    <group
+        android:id="@+id/second"
+        android:checkableBehavior="none">
+        <item android:id="@+id/nav_disconnect"
+            android:title="Disconnect"/>
+    </group>
+    <group
+        android:id="@+id/third"
+        android:checkableBehavior="none">
+        <item android:id="@+id/nav_reconnect"
+            android:title="Reconnect"/>
+    </group>
+
+</menu>

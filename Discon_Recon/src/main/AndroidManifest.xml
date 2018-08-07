@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tvd.trm_discon_recon">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".splash_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DisconListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Recon_List_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity4"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DisconnectionReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ReconnectionReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DisconnectionEfficiency"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity5"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ReconnectionEfficiency"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FeederDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TcDetails"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".location.Location"
+            android:label="@string/title_activity_location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Select_FDR_Details_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Select_FDR_Fetch_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity6"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Reconnection_memo_details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Recon_memo_printing"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".service.BluetoothService" />
+
+        <activity
+            android:name=".activities.SettingActivity"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name=".invoke.ApkNotification" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".activities.TcDetails2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DateSelectActivity7"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TC_Details2"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name=".receiver.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activities.FeederName"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TC_MAPPING"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.DateSelectActivity8"></activity>
+    </application>
+
+</manifest>

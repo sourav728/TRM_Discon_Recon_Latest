@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_discon"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:background="@drawable/mybuton"
+            android:drawableLeft="@drawable/disconnection"
+            android:text="Disconnection" />
+
+        <Button
+            android:id="@+id/btn_recon"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:drawableLeft="@drawable/reconnection"
+            android:background="@drawable/mybuton"
+            android:text="Reconnection" />
+
+        <Button
+            android:id="@+id/btn_discon_report"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:drawableLeft="@drawable/discon_report"
+            android:background="@drawable/mybuton"
+            android:text="Discon Report" />
+
+        <Button
+            android:id="@+id/btn_recon_report"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:drawableLeft="@drawable/recon"
+            android:background="@drawable/mybuton"
+            android:text="Recon Report" />
+        <Button
+            android:id="@+id/btn_discon_efficiency"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:background="@drawable/mybuton"
+            android:text="Discon Efficiency" />
+        <Button
+            android:id="@+id/btn_recon_efficiency"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:background="@drawable/mybuton"
+            android:text="Recon Efficiency" />
+        <Button
+            android:id="@+id/btn_feeder_details"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:background="@drawable/mybuton"
+            android:text="Feeder Details" />
+        <Button
+            android:id="@+id/btn_tc_details"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black2"
+            android:background="@drawable/mybuton"
+            android:text="TC Details" />
+    </LinearLayout>
+
+</RelativeLayout>
