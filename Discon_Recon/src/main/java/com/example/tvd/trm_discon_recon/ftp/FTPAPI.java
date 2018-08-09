@@ -59,15 +59,11 @@ public class FTPAPI {
     {
         if (val == 0)
         {
-            /*BASEURL = TEST_TRM_URL + SERVICE2;
-            BASETCURL = TEST_TRM_URL + SERVICE;*/
             //flag = "test";
             FINAL_FTP_HOST = TEST_FTP_HOST;
             FINAL_FTP_USER = TEST_FTP_USER;
             FINAL_FTP_PASS = TEST_FTP_PASS;
         }else {
-            /*BASEURL = REAL_TRM_URL + SERVICE2;
-            BASETCURL = REAL_TRM_URL + SERVICE;*/
             //flag = "real";
             FINAL_FTP_HOST = FTP_HOST;
             FINAL_FTP_USER = FTP_USER;
@@ -193,7 +189,6 @@ public class FTPAPI {
                 try {
                     downloadapk = false;
                     ftp_1.disconnect();
-                    //handler.sendEmptyMessage(DOWNLOAD_FILE_DELETE_CONNECTION_ERROR);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -268,96 +263,4 @@ public class FTPAPI {
         }
     }
 
-    public class Deletedownloadedfile extends AsyncTask<String, String, String> {
-        boolean deletedownfile = false, filedeleted = false;
-        Handler handler;
-
-        public Deletedownloadedfile(Handler handler) {
-            this.handler = handler;
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            fcall.logStatus("Main_Delete 1");
-            FTPClient ftp_1 = new FTPClient();
-            fcall.logStatus("Main_Delete 2");
-            try {
-                fcall.logStatus("Main_Delete 3");
-                ftp_1.connect(FINAL_FTP_HOST, FTP_PORT);
-                fcall.logStatus("Main_Delete 4");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                fcall.logStatus("Main_Delete 5");
-                ftp_1.login(FINAL_FTP_USER, FINAL_FTP_PASS);
-                deletedownfile = ftp_1.login(FINAL_FTP_USER, FINAL_FTP_PASS);
-                fcall.logStatus("Main_Delete 6");
-            } catch (FTPConnectionClosedException e) {
-                e.printStackTrace();
-                try {
-                    deletedownfile = false;
-                    ftp_1.disconnect();
-                    handler.sendEmptyMessage(DOWNLOAD_FILE_DELETE_CONNECTION_ERROR);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (deletedownfile) {
-                fcall.logStatus("Delete Discon_Recon true");
-                try {
-                    fcall.logStatus("Main_Delete 7");
-                    ftp_1.setFileType(FTP.BINARY_FILE_TYPE);
-                    ftp_1.enterLocalPassiveMode();
-                    fcall.logStatus("Main_Delete 8");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    fcall.logStatus("Main_Delete 9");
-                    ftp_1.changeWorkingDirectory(params[0]);
-                    fcall.logStatus("Main_Delete 10");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    fcall.logStatus("Main_Delete 11");
-                    FTPFile[] ftpFiles = ftp_1.listFiles(params[0]);
-                    fcall.logStatus("Main_Delete 12");
-                    int length = ftpFiles.length;
-                    fcall.logStatus("Main_Delete 13");
-                    fcall.logStatus("Main_Delete_length = " + length);
-                    for (int i = 0; i < length; i++) {
-                        String namefile = ftpFiles[i].getName();
-                        fcall.logStatus("Main_Delete_namefile : " + namefile);
-                        boolean isFile = ftpFiles[i].isFile();
-                        if (isFile) {
-                            fcall.logStatus("Main_Delete_File: " + params[1]);
-                            if (namefile.equals(params[1])) {
-                                fcall.logStatus("Main_Delete File found to delete");
-                                ftp_1.deleteFile(params[0] + params[1]);
-                                fcall.logStatus("Main_Delete File deleted from FTP");
-                                filedeleted = true;
-                                break;
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            deletedownfile = false;
-            if (filedeleted) {
-                try {
-                    ftp_1.logout();
-                    handler.sendEmptyMessage(DOWNLOAD_FILE_DELETED);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else handler.sendEmptyMessage(DOWNLOAD_FILE_NOT_DELETED);
-            return null;
-        }
-    }
 }

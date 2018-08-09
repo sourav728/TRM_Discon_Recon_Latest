@@ -150,14 +150,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_home) {
             fragment = new HomeFragment();
         } else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             SharedPreferences sharedPreferences = getSharedPreferences("MY_SHARED_PREF", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
             editor.commit();
-
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
             finish();
         } else if (id == R.id.nav_disconnect) {
             Intent intent = new Intent(MainActivity.this, DateSelectActivity.class);

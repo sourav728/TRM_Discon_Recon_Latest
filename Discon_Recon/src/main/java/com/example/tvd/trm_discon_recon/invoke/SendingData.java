@@ -44,7 +44,7 @@ import static com.example.tvd.trm_discon_recon.values.ConstantValues.SERVICE2;
 import static com.example.tvd.trm_discon_recon.values.ConstantValues.TEST_TRM_URL;
 
 public class SendingData {
-    String flag, p;
+
     public SendingData(Context context)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MY_SHARED_PREF", MODE_PRIVATE);

@@ -32,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -113,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     //below code is for custom toast
                     inflater = getLayoutInflater();
                     layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_layout));
-                    ImageView imageView1 =  layout.findViewById(R.id.image);
+                    ImageView imageView1 = layout.findViewById(R.id.image);
                     imageView1.setImageResource(R.drawable.invalid);
                     TextView textView1 = layout.findViewById(R.id.text);
                     textView1.setText("Invalid Credentials!!");
@@ -167,19 +168,23 @@ public class LoginActivity extends AppCompatActivity {
         }
         initialize();
 
+        test_server.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (test_server.isChecked()) {
+                    SavePreferences("TEST_REAL_SERVER", "TEST");
+                    sendingdata = new SendingData(LoginActivity.this);
+                } else {
+                    SavePreferences("TEST_REAL_SERVER", "REAL");
+                    sendingdata = new SendingData(LoginActivity.this);
+                }
+            }
+        });
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //todo for checking server date
-
-                if (test_server.isChecked()) {
-                    Toast.makeText(LoginActivity.this, "Test Server", Toast.LENGTH_SHORT).show();
-                    SavePreferences("TEST_REAL_SERVER","TEST");
-                } else {
-                    Toast.makeText(LoginActivity.this, "Real Server", Toast.LENGTH_SHORT).show();
-                    SavePreferences("TEST_REAL_SERVER","REAL");
-                }
-
                 if (fcall.isInternetOn(LoginActivity.this)) {
                     username = mrcode.getText().toString().trim();
                     SharedPreferences ss = getSharedPreferences("loginSession_key", 0);
