@@ -206,6 +206,7 @@ public class DisconListActivity extends AppCompatActivity {
         /****************MRCode and Date is hardcoaded******************/
         discon_list.execute(login_mr_code, disconnection_date);
         //discon_list.execute("54003895","2018/08/05");
+        //discon_list.execute("54003818","2018/08/02");
     }
 
 

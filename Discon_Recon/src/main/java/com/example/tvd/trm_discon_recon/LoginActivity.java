@@ -202,7 +202,7 @@ public class LoginActivity extends AppCompatActivity {
                     // String DeviceID ="863697039938021";
                     //Device ID for MR
                     //User ID 54003799
-                    //String DeviceID ="354016070557564";
+                   // String DeviceID ="354016070557564";
                     //Device id for AAO
                     //User ID 10540038
                     // String DeviceID = "866133033048564";

@@ -48,6 +48,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -231,7 +232,7 @@ public class Location extends FragmentActivity implements OnMapReadyCallback,
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.loc1));
         //mMap.addMarker(markerOptions).setTitle("" + latLng + "," + subLocality + "," + state + "," + country);
         // mMap.addMarker(new MarkerOptions().title(mrname).snippet("Mrcode:   " + mrcode).position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        if (!lati.equals("") && !longi.equals("") && !lati.equals("NA") && !longi.equals("NA")) {
+        if (!StringUtils.equalsIgnoreCase(lati,"") && !StringUtils.equalsIgnoreCase(longi,"") && !StringUtils.equalsIgnoreCase(lati,"NA") && !StringUtils.equalsIgnoreCase(longi,"NA") && !StringUtils.equalsIgnoreCase(lati,"0") && !StringUtils.equalsIgnoreCase(longi,"0")) {
             try {
                 double_lati = Double.parseDouble(lati);
                 Log.d("Debugg", "Latitude" + double_lati);
@@ -242,34 +243,9 @@ public class Location extends FragmentActivity implements OnMapReadyCallback,
                 e.printStackTrace();
             }
         } else {
-            Toast.makeText(this, "Location not yet updated!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Location is not available for this Consumer!!", Toast.LENGTH_SHORT).show();
             finish();
         }
-
-
-        /*********FOR DISPLAYING MULTIPLE MARKER ON MAPS***************/
-        /*for (int i=0;i<arrayList.size();i++)
-        {
-            GetSetValues getsetvalues = arrayList.get(i);
-            lati = getsetvalues.getLatitude();
-            longi = getsetvalues.getLongitude();
-            if (!lati.equals("")&&!longi.equals("")&&!lati.equals("0.0")&&!longi.equals("0.0"))
-            {
-                try {
-                    double_lati = Double.parseDouble(lati);
-                    Log.d("Debugg","Latitude"+double_lati);
-                    double_longi = Double.parseDouble(longi);
-                    Log.d("Debugg","Longitude"+double_longi);
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(double_lati, double_longi)));
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }*/
-
-        /********************END OF MULTIPLE MARKER SHOWN CODE**********************/
 
         //move map camera
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -410,10 +386,7 @@ public class Location extends FragmentActivity implements OnMapReadyCallback,
             String distance = "";
             String duration = "";
             String address = "";
-           /* if (result.size() < 1) {
-                Toast.makeText(getBaseContext(), "No Points", Toast.LENGTH_SHORT).show();
-                return;
-            }*/
+
 
             if (polylines.size() > 0) {
                 polylines.get(0).remove();
