@@ -38,10 +38,18 @@ public class GetSetValues {
     private String recon_memo_dr_fee = "";
     private String recon_memo_reconnection_date = "";
     private String recon_memo_subdiv = "";
-
+    private String final_reading="";
 
     public String getMRCODE() {
         return MRCODE;
+    }
+
+    public String getFinal_reading() {
+        return final_reading;
+    }
+
+    public void setFinal_reading(String final_reading) {
+        this.final_reading = final_reading;
     }
 
     public void setMRCODE(String MRCODE) {

@@ -24,7 +24,7 @@ public class Database {
             databasefile = fcall.filestorepath(databasefolder, database_name);
             fcall.logStatus("Discon Database does not exists!!");
             databasepath = fcall.filepath(databasefolder) + File.separator + database_name;
-            mh = new MyHelper(context, databasepath, null, 6);
+            mh = new MyHelper(context, databasepath, null, 7);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class Database {
                     "CONSUMER_NAME TEXT, ADD1 TEXT, LAT TEXT, LON TEXT, MTR_READ TEXT, FLAG TEXT, MTR_READING, REMARK);");*/
             db.execSQL("Create table DISCON(_id integer primary key, ACC_ID TEXT ,ARREARS TEXT,DIS_DATE TEXT,PREVREAD TEXT, " +
                     "CONSUMER_NAME TEXT, ADD1 TEXT, LAT TEXT, LON TEXT, MTR_READ TEXT, FLAG TEXT, MTR_READING, REMARK, UNIQUE(ACC_ID,DIS_DATE));");
-            db.execSQL("Create table RECON(_id integer primary key, ACC_ID TEXT ,REDATE TEXT,PREVREAD TEXT, " +
+            db.execSQL("Create table RECON(_id integer primary key, ACC_ID TEXT ,ARREARS TEXT, REDATE TEXT,PREVREAD TEXT, " +
                     "CONSUMER_NAME TEXT, ADD1 TEXT, LAT TEXT, LON TEXT, MTR_READ TEXT, FLAG TEXT, MTR_READING, REMARK, UNIQUE(ACC_ID,REDATE));");
         }
 

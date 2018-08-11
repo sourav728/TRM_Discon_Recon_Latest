@@ -232,7 +232,7 @@ public class Location extends FragmentActivity implements OnMapReadyCallback,
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.loc1));
         //mMap.addMarker(markerOptions).setTitle("" + latLng + "," + subLocality + "," + state + "," + country);
         // mMap.addMarker(new MarkerOptions().title(mrname).snippet("Mrcode:   " + mrcode).position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        if (!StringUtils.equalsIgnoreCase(lati,"") && !StringUtils.equalsIgnoreCase(longi,"") && !StringUtils.equalsIgnoreCase(lati,"NA") && !StringUtils.equalsIgnoreCase(longi,"NA") && !StringUtils.equalsIgnoreCase(lati,"0") && !StringUtils.equalsIgnoreCase(longi,"0")) {
+        if (!StringUtils.equalsIgnoreCase(lati,"") && !StringUtils.equalsIgnoreCase(longi,"") && !StringUtils.equalsIgnoreCase(lati,"NA") && !StringUtils.equalsIgnoreCase(longi,"NA") && !StringUtils.equalsIgnoreCase(lati,"0") && !StringUtils.equalsIgnoreCase(longi,"0") && !StringUtils.equalsIgnoreCase(lati,"0.0") && !StringUtils.equalsIgnoreCase(longi,"0.0")) {
             try {
                 double_lati = Double.parseDouble(lati);
                 Log.d("Debugg", "Latitude" + double_lati);

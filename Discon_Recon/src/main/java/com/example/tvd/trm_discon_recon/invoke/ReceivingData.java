@@ -231,6 +231,7 @@ public class ReceivingData {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     getSetValues = new GetSetValues();
                     String ACCT_ID = jsonObject.getString("ACCT_ID");
+                    String ARREARS = jsonObject.getString("ARREARS");
                     String RE_DATE = jsonObject.getString("RE_DATE");
                     String PREVREAD = jsonObject.getString("PREVREAD");
                     String CONSUMER_NAME = jsonObject.getString("CONSUMER_NAME");
@@ -242,6 +243,10 @@ public class ReceivingData {
                     if (!ACCT_ID.equals(""))
                         getSetValues.setAcc_id(ACCT_ID);
                     else getSetValues.setAcc_id("NA");
+
+                    if (!ARREARS.equals(""))
+                        getSetValues.setArrears(ARREARS);
+                    else getSetValues.setArrears("NA");
 
                     if (!RE_DATE.equals(""))
                         getSetValues.setRe_date(RE_DATE);

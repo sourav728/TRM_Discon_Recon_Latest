@@ -196,6 +196,7 @@ public class Recon_List_Activity extends AppCompatActivity {
         recon_list.execute(login_mr_code, reconnection_date);
         //recon_list.execute("54003714","2018/07/05");
         //recon_list.execute("54003715","2018/07/05");
+        //recon_list.execute("54003895","2018/08/05");
     }
 
     public void show_reconnection_dialog(int id, final int position, ArrayList<GetSetValues> arrayList) {
@@ -214,6 +215,8 @@ public class Recon_List_Activity extends AppCompatActivity {
                 final TextView name = (TextView) view.findViewById(R.id.txt_name);
                 final TextView address = (TextView) view.findViewById(R.id.txt_address);
                 final TextView discon_date = (TextView) view.findViewById(R.id.txt_discon_date);
+                final TextView recon_arrears = (TextView) view.findViewById(R.id.txt_arrears);
+
 
                 final EditText curread = (EditText) view.findViewById(R.id.edit_curread);
                 final EditText comments = (EditText) view.findViewById(R.id.edit_comments);
@@ -276,6 +279,8 @@ public class Recon_List_Activity extends AppCompatActivity {
                         name.setText(getSetValues.getRecon_consumer_name());
                         address.setText(getSetValues.getRecon_add1());
                         discon_date.setText(getSetValues.getRecon_date());
+                        recon_arrears.setText(getSetValues.getArrears());
+
                         disconnect_button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -328,6 +333,7 @@ public class Recon_List_Activity extends AppCompatActivity {
                 String recon_date = getsetvalues.getRe_date();
                 recon_date = recon_date.substring(0,recon_date.lastIndexOf(" "));
                 Log.d("Debug","Dis_Date"+recon_date);
+                cv.put("ARREARS",getsetvalues.getArrears());
                 cv.put("REDATE", recon_date);
                 cv.put("PREVREAD", getsetvalues.getPrev_read());
                 cv.put("CONSUMER_NAME", getsetvalues.getConsumer_name());
@@ -367,6 +373,7 @@ public class Recon_List_Activity extends AppCompatActivity {
                 getSetValues.setRecon_lon(String.valueOf(cursor.getString(cursor.getColumnIndex("LON"))));
                 getSetValues.setRecon_mtr_read(String.valueOf(cursor.getString(cursor.getColumnIndex("MTR_READ"))));
                 getSetValues.setRecon_flag(String.valueOf(cursor.getString(cursor.getColumnIndex("FLAG"))));
+                getSetValues.setArrears(String.valueOf(cursor.getString(cursor.getColumnIndex("ARREARS"))));
 
                 Log.d("Debug", "Recon ID" + cursor.getInt(cursor.getColumnIndex("_id")));
                 Log.d("Debug", "Recon Accid" + cursor.getString(cursor.getColumnIndex("ACC_ID")));
@@ -378,6 +385,7 @@ public class Recon_List_Activity extends AppCompatActivity {
                 Log.d("Debug", "Recon_lon" + cursor.getString(cursor.getColumnIndex("LON")));
                 Log.d("Debug", "Recon_Mtr_Read" + cursor.getString(cursor.getColumnIndex("MTR_READ")));
                 Log.d("Debug", "Recon_flag" + cursor.getString(cursor.getColumnIndex("FLAG")));
+                Log.d("Debug","Arrears" + cursor.getString(cursor.getColumnIndex("ARREARS")));
                 arrayList1.add(getSetValues);
                 recon_list_adapter.notifyDataSetChanged();
             }

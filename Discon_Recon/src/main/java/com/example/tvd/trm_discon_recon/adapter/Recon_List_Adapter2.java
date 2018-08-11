@@ -52,6 +52,7 @@ public class Recon_List_Adapter2 extends RecyclerView.Adapter<Recon_List_Adapter
         //here %s%s meaning first string will set on first then space and then second string
         holder.prevraed.setText(getSetValues.getRecon_prevread());
         holder.re_date.setText(getSetValues.getRecon_date());
+        holder.arrears.setText(getSetValues.getArrears());
         Log.d("Debug","Recon_PrevRead"+getSetValues.getRecon_prevread());
         if (StringUtils.startsWithIgnoreCase(getSetValues.getRecon_flag(),"Y"))
             holder.reconnected.setVisibility(View.VISIBLE);
@@ -95,7 +96,7 @@ public class Recon_List_Adapter2 extends RecyclerView.Adapter<Recon_List_Adapter
     }
 
     public class Recon_Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView accountid, prevraed, reconnected, re_date,name;
+        TextView accountid, prevraed, reconnected, re_date,name, arrears;
         LinearLayout lin;
         ImageView reconnect, location;
         public Recon_Holder(View itemView) {
@@ -105,6 +106,7 @@ public class Recon_List_Adapter2 extends RecyclerView.Adapter<Recon_List_Adapter
             prevraed = (TextView) itemView.findViewById(R.id.txt_prevread);
             reconnected = (TextView) itemView.findViewById(R.id.txt_reconnected);
             name = itemView.findViewById(R.id.txt_name);
+            arrears = itemView.findViewById(R.id.txt_arrears);
 
             re_date = itemView.findViewById(R.id.txt_redate);
             reconnect = itemView.findViewById(R.id.img_reconnect);

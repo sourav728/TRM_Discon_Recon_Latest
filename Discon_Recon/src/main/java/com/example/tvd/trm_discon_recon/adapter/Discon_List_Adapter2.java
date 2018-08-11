@@ -56,8 +56,15 @@ public class Discon_List_Adapter2 extends RecyclerView.Adapter<Discon_List_Adapt
         holder.prevraed.setText(getSetValues.getDiscon_prevread());
         Log.d("Holder","PrevRead"+getSetValues.getDiscon_prevread());
         if (StringUtils.startsWithIgnoreCase(getSetValues.getDiscon_flag(),"Y"))
+        {
             holder.disconnected.setVisibility(View.VISIBLE);
-        else holder.disconnected.setVisibility(View.INVISIBLE);
+            holder.curr_read_show_hide.setVisibility(View.VISIBLE);
+            holder.final_read.setText(getSetValues.getFinal_reading());
+        }
+        else {
+            holder.disconnected.setVisibility(View.INVISIBLE);
+            holder.curr_read_show_hide.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -98,18 +105,21 @@ public class Discon_List_Adapter2 extends RecyclerView.Adapter<Discon_List_Adapt
     }
 
     public class Discon_Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView accountid, arrears, prevraed, disconnected,conname;
+        TextView accountid, arrears, prevraed, disconnected,conname,final_read;
         ImageView marker,disconnection;
-        LinearLayout lin;
+        LinearLayout lin,curr_read_show_hide;
         public Discon_Holder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            curr_read_show_hide = itemView.findViewById(R.id.lin_currentread_show_hide);
             accountid =  itemView.findViewById(R.id.txt_account_id);
             arrears =  itemView.findViewById(R.id.txt_arrears);
             prevraed =  itemView.findViewById(R.id.txt_prevread);
             disconnected = itemView.findViewById(R.id.txt_disconnected);
             conname = itemView.findViewById(R.id.txt_cons_name);
             marker = itemView.findViewById(R.id.img_marker);
+            final_read = itemView.findViewById(R.id.txt_finalread);
+
             marker.setOnClickListener(this);
             disconnection = itemView.findViewById(R.id.img_disconnect);
             disconnection.setOnClickListener(this);

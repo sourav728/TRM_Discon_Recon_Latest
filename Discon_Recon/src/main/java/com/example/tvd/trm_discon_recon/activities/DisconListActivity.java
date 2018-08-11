@@ -181,7 +181,7 @@ public class DisconListActivity extends AppCompatActivity {
 
 
         total_count = findViewById(R.id.txt_total_count);
-        discon_count =  findViewById(R.id.txt_discon_count);
+        discon_count = findViewById(R.id.txt_discon_count);
         remaining = findViewById(R.id.txt_remaining);
 
         pdialog = new ProgressDialog(this);
@@ -226,7 +226,6 @@ public class DisconListActivity extends AppCompatActivity {
                 final TextView name = view.findViewById(R.id.txt_name);
                 final TextView address = view.findViewById(R.id.txt_address);
                 final TextView discon_date = view.findViewById(R.id.txt_discon_date);
-                final LinearLayout show_hide = view.findViewById(R.id.lin_show_hide);
                 final EditText curread = view.findViewById(R.id.edit_curread);
                 final EditText comments = view.findViewById(R.id.edit_comment);
 
@@ -299,7 +298,6 @@ public class DisconListActivity extends AppCompatActivity {
                             public void onClick(View v) {
                                 if (!TextUtils.isEmpty(curread.getText())) {
                                     if (!selected_role.equals("--SELECT--")) {
-                                        show_hide.setVisibility(View.VISIBLE);
                                         reading = curread.getText().toString();
                                         if (Double.parseDouble(getSetValues.getDiscon_prevread()) <= Double.parseDouble(reading)) {
                                             if (!comments.getText().toString().equals("")) {
@@ -391,6 +389,7 @@ public class DisconListActivity extends AppCompatActivity {
                 getSetValues.setDiscon_lon(String.valueOf(cursor.getString(cursor.getColumnIndex("LON"))));
                 getSetValues.setDiscon_mtr_read(String.valueOf(cursor.getString(cursor.getColumnIndex("MTR_READ"))));
                 getSetValues.setDiscon_flag(String.valueOf(cursor.getString(cursor.getColumnIndex("FLAG"))));
+                getSetValues.setFinal_reading(String.valueOf(cursor.getString(cursor.getColumnIndex("MTR_READING"))));
 
                 Log.d("Debug", "Discon ID" + cursor.getInt(cursor.getColumnIndex("_id")));
                 Log.d("Debug", "Discon Accid" + cursor.getString(cursor.getColumnIndex("ACC_ID")));
@@ -403,6 +402,7 @@ public class DisconListActivity extends AppCompatActivity {
                 Log.d("Debug", "Discon_lon" + cursor.getString(cursor.getColumnIndex("LON")));
                 Log.d("Debug", "Discon_Mtr_Read" + cursor.getString(cursor.getColumnIndex("MTR_READ")));
                 Log.d("Debug", "Discon_flag" + cursor.getString(cursor.getColumnIndex("FLAG")));
+                Log.d("Debug", "Final Reading" + cursor.getString(cursor.getColumnIndex("MTR_READING")));
                 arrayList1.add(getSetValues);
                 discon_list_adapter.notifyDataSetChanged();
             }
