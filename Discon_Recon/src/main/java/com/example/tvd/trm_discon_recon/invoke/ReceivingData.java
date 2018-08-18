@@ -311,6 +311,11 @@ public class ReceivingData {
                     String FDRIR = jsonObject.getString("FDRIR");
                     String FDRFR = jsonObject.getString("FDRFR");
                     String FDRMF = jsonObject.getString("FDRMF");
+                    String FDR_NAME = jsonObject.getString("FDRNAME");
+                    String FDR_SRTPV = jsonObject.getString("SRTPV_INPUT");
+                    String FDR_BOUNDARY = jsonObject.getString("Boundary_Mtr_Export");
+
+
                     if (!FDRCODE.equals(""))
                         getSetValues.setFdr_code(FDRCODE);
                     else getSetValues.setFdr_code("NA");
@@ -323,6 +328,15 @@ public class ReceivingData {
                     if (!FDRMF.equals(""))
                         getSetValues.setFdr_mf(FDRMF);
                     else getSetValues.setFdr_mf("NA");
+                    if (!FDR_NAME.equals(""))
+                        getSetValues.setFdr_name(FDR_NAME);
+                    else getSetValues.setFdr_name("NA");
+                    if (!FDR_SRTPV.equals(""))
+                        getSetValues.setFdr_srtpv(FDR_SRTPV);
+                    else getSetValues.setFdr_mf("NA");
+                    if (!FDR_BOUNDARY.equals(""))
+                        getSetValues.setFdr_boundary(FDR_BOUNDARY);
+                    else getSetValues.setFdr_boundary("NA");
 
                     arrayList.add(getSetValues);
                     feeder_details_adapter.notifyDataSetChanged();

@@ -17,20 +17,21 @@ import java.util.ArrayList;
 
 import static com.example.tvd.trm_discon_recon.values.ConstantValues.FEEDER_DETAILS_UPDATE_DIALOG;
 
-public class Feeder_details_Adapter extends RecyclerView.Adapter<Feeder_details_Adapter.FeederHolder> implements Filterable{
-    private ArrayList<GetSetValues> arrayList ;
-    private ArrayList<GetSetValues>filteredList;
+public class Feeder_details_Adapter extends RecyclerView.Adapter<Feeder_details_Adapter.FeederHolder> implements Filterable {
+    private ArrayList<GetSetValues> arrayList;
+    private ArrayList<GetSetValues> filteredList;
     private Context context;
     private GetSetValues getSetValues;
     private FeederDetails feederDetails;
-    public Feeder_details_Adapter(ArrayList<GetSetValues>arrayList, Context context, GetSetValues getSetValues,FeederDetails feederDetails)
-    {
+
+    public Feeder_details_Adapter(ArrayList<GetSetValues> arrayList, Context context, GetSetValues getSetValues, FeederDetails feederDetails) {
         this.arrayList = arrayList;
         this.context = context;
         this.getSetValues = getSetValues;
         this.feederDetails = feederDetails;
         this.filteredList = arrayList;
     }
+
     @Override
     public Feeder_details_Adapter.FeederHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feeder_details_adapter_layout, null);
@@ -40,10 +41,14 @@ public class Feeder_details_Adapter extends RecyclerView.Adapter<Feeder_details_
     @Override
     public void onBindViewHolder(Feeder_details_Adapter.FeederHolder holder, int position) {
         GetSetValues getSetValues = arrayList.get(position);
+        holder.fdr_name.setText(getSetValues.getFdr_name());
         holder.fdr_code.setText(getSetValues.getFdr_code());
         holder.fdr_ir.setText(getSetValues.getFdr_ir());
         holder.fdr_fr.setText(getSetValues.getFdr_fr());
         holder.fdr_mf.setText(getSetValues.getFdr_mf());
+        holder.fdr_srtpv.setText(getSetValues.getFdr_srtpv());
+        holder.fdr_export.setText(getSetValues.getFdr_boundary());
+
     }
 
     @Override
@@ -56,7 +61,7 @@ public class Feeder_details_Adapter extends RecyclerView.Adapter<Feeder_details_
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String search=constraint.toString();
+                String search = constraint.toString();
                 if (search.isEmpty())
                     arrayList = filteredList;
                 else {
@@ -83,22 +88,27 @@ public class Feeder_details_Adapter extends RecyclerView.Adapter<Feeder_details_
         };
     }
 
-    public class FeederHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView fdr_code,fdr_ir,fdr_fr,fdr_mf;
+    public class FeederHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView fdr_name, fdr_code, fdr_ir, fdr_fr, fdr_mf, fdr_srtpv, fdr_export;
+
         public FeederHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            fdr_name = itemView.findViewById(R.id.txt_feeder_name);
             fdr_code = itemView.findViewById(R.id.txt_feeder_code);
             fdr_ir = itemView.findViewById(R.id.txt_fdrir);
             fdr_fr = itemView.findViewById(R.id.txt_fdrfr);
             fdr_mf = itemView.findViewById(R.id.txt_fdr_mf);
+            fdr_srtpv = itemView.findViewById(R.id.txt_fdr_srtpv);
+            fdr_export = itemView.findViewById(R.id.txt_fdr_export);
+
         }
 
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
             GetSetValues getSetValues = arrayList.get(position);
-            feederDetails.show_fdr_details_update_dialog(FEEDER_DETAILS_UPDATE_DIALOG,position,arrayList);
+            feederDetails.show_fdr_details_update_dialog(FEEDER_DETAILS_UPDATE_DIALOG, position, arrayList);
         }
     }
 }

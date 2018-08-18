@@ -410,6 +410,10 @@ public class SendingData {
             datamap.put("FDRCODE", params[0]);
             datamap.put("DATE", params[1]);
             datamap.put("FDRFR", params[2]);
+            datamap.put("Latitude", params[3]);
+            datamap.put("Longitude", params[4]);
+            datamap.put("SRTPV", params[5]);
+            datamap.put("Boundary_Export", params[6]);
             try {
                // response = UrlPostConnection("http://bc_service2.hescomtrm.com/ReadFile.asmx/FDRFR_Update", datamap);
                 response = UrlPostConnection(BASEURL + "FDRFR_Update", datamap);

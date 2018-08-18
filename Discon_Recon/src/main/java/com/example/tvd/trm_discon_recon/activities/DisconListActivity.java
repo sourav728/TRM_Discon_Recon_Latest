@@ -257,11 +257,6 @@ public class DisconListActivity extends AppCompatActivity {
                                 TextView role = (TextView) view.findViewById(R.id.spinner_txt);
                                 role.setBackgroundDrawable(null);
                                 selected_role = role.getText().toString();
-                                //todo I have to remove comments for the below lines for Amount Paid option
-                               /* if (!selected_role.equals("Amount Paid"))
-                                    show_hide.setVisibility(View.GONE);
-                                else show_hide.setVisibility(View.VISIBLE);*/
-                                // Toast.makeText(getActivity(), "Selected Role" + selected_role, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override

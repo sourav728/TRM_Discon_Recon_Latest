@@ -1,5 +1,6 @@
 package com.example.tvd.trm_discon_recon.activities;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.example.tvd.trm_discon_recon.R;
 import com.example.tvd.trm_discon_recon.adapter.Feeder_details_Adapter;
 import com.example.tvd.trm_discon_recon.invoke.SendingData;
+import com.example.tvd.trm_discon_recon.location.ClassGPS;
 import com.example.tvd.trm_discon_recon.values.FunctionCall;
 import com.example.tvd.trm_discon_recon.values.GetSetValues;
 
@@ -45,12 +47,15 @@ public class FeederDetails extends AppCompatActivity {
     ArrayList<GetSetValues> arrayList;
     SendingData sendingData;
     FunctionCall functionCall;
-    private Toolbar toolbar;
+    Toolbar toolbar;
     TextView toolbar_text, date, display_subdivision;
-    String fdr_details_date = "", subdivision = "", parsed_date = "", cur_reading = "";
+    String fdr_details_date = "", subdivision = "", parsed_date = "", cur_reading = "", fdr_srtpv = "", fdr_boundary = "";
     AlertDialog feeder_details_update_dialog;
-    private SearchView searchView;
+    SearchView searchView;
     private Feeder_details_Adapter feeder_details_adapter;
+    ClassGPS classGPS;
+    String gps_lat = "", gps_long = "";
+
     private final Handler mhandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -84,6 +89,7 @@ public class FeederDetails extends AppCompatActivity {
         }
     });
 
+    @SuppressLint("SetTextI18n")
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -123,6 +129,7 @@ public class FeederDetails extends AppCompatActivity {
             }
         });
 
+        classGPS = new ClassGPS(this);
         date = findViewById(R.id.txt_date);
         display_subdivision = findViewById(R.id.txt_subdiv);
 
@@ -152,8 +159,18 @@ public class FeederDetails extends AppCompatActivity {
         sendFeeder_details.execute(subdivision, parsed_date);
     }
 
+    //***********************************************************************************************************************************************
+    private void GPSlocation() {
+        if (classGPS.canGetLocation()) {
+            double latitude = classGPS.getLatitude();
+            double longitude = classGPS.getLongitude();
+            gps_lat = "" + latitude;
+            gps_long = "" + longitude;
+        }
+    }
+
+    //***********************************************************************************************************************************************
     public void show_fdr_details_update_dialog(int id, final int position, ArrayList<GetSetValues> arrayList) {
-        final AlertDialog alertDialog;
         final GetSetValues getSetValues = arrayList.get(position);
         switch (id) {
             case FEEDER_DETAILS_UPDATE_DIALOG:
@@ -161,11 +178,15 @@ public class FeederDetails extends AppCompatActivity {
                 dialog.setTitle("FDR UPDATE");
                 dialog.setCancelable(false);
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.feeder_details_update_layout, null);
+                @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.feeder_details_update_layout, null);
                 dialog.setView(view);
+                final TextView fdr_name = view.findViewById(R.id.txt_fdr_name);
                 final TextView fdr_code = view.findViewById(R.id.txt_fdr_code);
                 final TextView fdr_ir = view.findViewById(R.id.txt_fdr_ir);
                 final EditText current_reading = view.findViewById(R.id.edit_current_reading);
+                final EditText srtpv_input = view.findViewById(R.id.edit_srtpv_input);
+                final EditText boundary_export = view.findViewById(R.id.edit_boundary_export);
+
                 final Button cancel_button = view.findViewById(R.id.dialog_negative_btn);
                 final Button update_button = view.findViewById(R.id.dialog_positive_btn);
 
@@ -173,9 +194,12 @@ public class FeederDetails extends AppCompatActivity {
                 feeder_details_update_dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialog) {
+                        fdr_name.setText(getSetValues.getFdr_name());
                         fdr_code.setText(getSetValues.getFdr_code());
                         current_reading.setText(getSetValues.getFdr_fr());
                         fdr_ir.setText(getSetValues.getFdr_ir());
+                        srtpv_input.setText(getSetValues.getFdr_srtpv());
+                        boundary_export.setText(getSetValues.getFdr_boundary());
                        /* current_reading.addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -195,17 +219,22 @@ public class FeederDetails extends AppCompatActivity {
                         update_button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                GPSlocation();
                                 cur_reading = current_reading.getText().toString();
+                                fdr_srtpv = srtpv_input.getText().toString();
+                                fdr_boundary = boundary_export.getText().toString();
                                 if (Double.parseDouble(getSetValues.getFdr_ir()) < Double.parseDouble(cur_reading)) {
                                     progressDialog = new ProgressDialog(FeederDetails.this, R.style.MyProgressDialogstyle);
                                     progressDialog.setTitle("Updating Feeder details..");
                                     progressDialog.setMessage("Please Wait..");
                                     progressDialog.show();
                                     SendingData.FDR_Fr_Update fdr_fr_update = sendingData.new FDR_Fr_Update(mhandler, getSetValues);
-                                    fdr_fr_update.execute(getSetValues.getFdr_code(), parsed_date, current_reading.getText().toString());
+                                    fdr_fr_update.execute(getSetValues.getFdr_code(), parsed_date, current_reading.getText().toString(),
+                                            gps_lat, gps_long, fdr_srtpv, fdr_boundary);
+
+
                                 } else
-                                    Toast.makeText(FeederDetails.this, "Current Reading should be greater than Previous Reading!!",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(FeederDetails.this, "Current Reading should be greater than Previous Reading!!", Toast.LENGTH_SHORT).show();
 
                             }
                         });

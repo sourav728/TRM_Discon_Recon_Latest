@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     String cur_version = "", username = "";
     static Context context;
     CheckBox test_server;
-    String DeviceID="";
+    String DeviceID = "";
     private final Handler mhandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -202,24 +202,26 @@ public class LoginActivity extends AppCompatActivity {
 
                     getMrcode = mrcode.getText().toString();
 
-                    // String DeviceID ="863697039938021";
+                    //DeviceID ="863697039938021";
                     //Device ID for MR
                     //User ID 54003799
-                    // String DeviceID ="354016070557564";
+
+                    // DeviceID ="354016070557564";
                     //Device id for AAO
                     //User ID 10540038
-                    // String DeviceID = "866133033048564";
+                    // DeviceID = "866133033048564";
+
                     /*Code: 54003892
                     Date: 2018/06/13
                     Password: 123123*/
-                    //String DeviceID = "352514083875934";
+                    //DeviceID = "352514083875934";
 
                     //AEE Login
                     //UserName =11540037
                     //Password = CSD1AEE@123
                     //DeviceID = "866133032881726";
                     //DeviceID = "357869083548989";
-                    //DeviceID = telephonyManager.getDeviceId();
+
                     TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
                     if (ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
@@ -231,7 +233,7 @@ public class LoginActivity extends AppCompatActivity {
                         // for ActivityCompat#requestPermissions for more details.
                         return;
                     }
-                    String DeviceID = telephonyManager.getDeviceId();
+                    DeviceID = telephonyManager.getDeviceId();
                     Log.d("Debug", "Device ID" + DeviceID);
                     getpassword = password.getText().toString();
                     if (mrcode.getText().length() <= 0) {
@@ -263,6 +265,7 @@ public class LoginActivity extends AppCompatActivity {
         test_server = findViewById(R.id.checkbox);
         sendingdata = new SendingData(this);
     }
+
 
     private void SavePreferences(String key, String value) {
         SharedPreferences sharedPreferences = getSharedPreferences("MY_SHARED_PREF", MODE_PRIVATE);

@@ -9,7 +9,38 @@ public class GetSetValues {
             recon_add1 = "", recon_lat = "", recon_lon = "", recon_mtr_read = "", recon_flag = "", recon_remark = "", re_date = "";
     private String mr_device_id = "", mr_subdiv_name = "";
     private String selected_discon_date = "";
-    private String fdr_code = "", fdr_ir = "", fdr_fr = "", fdr_mf = "";
+    private String fdr_code = "";
+    private String fdr_ir = "";
+    private String fdr_fr = "";
+    private String fdr_mf = "";
+    private String fdr_name="";
+    private String fdr_srtpv="";
+
+    public String getFdr_name() {
+        return fdr_name;
+    }
+
+    public void setFdr_name(String fdr_name) {
+        this.fdr_name = fdr_name;
+    }
+
+    public String getFdr_srtpv() {
+        return fdr_srtpv;
+    }
+
+    public void setFdr_srtpv(String fdr_srtpv) {
+        this.fdr_srtpv = fdr_srtpv;
+    }
+
+    public String getFdr_boundary() {
+        return fdr_boundary;
+    }
+
+    public void setFdr_boundary(String fdr_boundary) {
+        this.fdr_boundary = fdr_boundary;
+    }
+
+    private String fdr_boundary="";
     private String feeder_code = "";
     private String recon_memo_acc_id = "";
     private String recon_memo_rrno = "";

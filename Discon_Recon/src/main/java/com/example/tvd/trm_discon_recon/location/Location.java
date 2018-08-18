@@ -163,6 +163,8 @@ public class Location extends FragmentActivity implements OnMapReadyCallback,
         destination_address = persistentbottomSheet.findViewById(R.id.txt_destination_address);
 
         behavior = BottomSheetBehavior.from(persistentbottomSheet);
+
+
         iv_trigger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

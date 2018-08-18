@@ -34,7 +34,7 @@ public class FeederName extends AppCompatActivity {
     GetSetValues getSetValues;
     RoleAdapter3 roleAdapter3;
     FunctionCall fcall;
-    private Toolbar toolbar;
+    Toolbar toolbar;
     Button search;
     TextView toolbar_text;
     ProgressDialog progressDialog;
@@ -131,7 +131,7 @@ public class FeederName extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MY_SHARED_PREF", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 }
 
