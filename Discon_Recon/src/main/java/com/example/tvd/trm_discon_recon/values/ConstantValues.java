@@ -23,6 +23,7 @@ public class ConstantValues {
     public static String TEST_FTP_USER = "TRMFTP01_TEST";
     public static String TEST_FTP_PASS = "4567890";
 
+    public static String MY_API_KEY = "AIzaSyBkzzbp44Bsw2kClSadmkDWAB2VLG6--m0";
 
     public static final int LOGIN_SUCCESS = 1;
     public static final int LOGIN_FAILURE = 2;
