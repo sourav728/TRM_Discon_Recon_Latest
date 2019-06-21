@@ -2,6 +2,7 @@ package com.example.tvd.trm_discon_recon;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -73,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox test_server;
     String DeviceID = "";
     private final Handler mhandler = new Handler(new Handler.Callback() {
+        @SuppressLint("SetTextI18n")
         @Override
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
